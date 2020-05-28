@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>N.D.A. Homepage</title>
+    <meta setchar="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="/img/logo.png">
+    <link rel="stylesheet" href="/css/navigation.css" type="text/css">
+    <link rel="stylesheet" href="/css/homepage.css" type="text/css">
+    <link rel="stylesheet" href="/css/basicCSS.css" type="text/css">
+    <link rel="stylesheet" href="/css/uploadpage.css" type="text/css">
+
+    <script type="text/javascript" src="/javascript/navigation.js"></script>
+    <script type="text/javascript" src="/javascript/downloadpage.js"></script>
+</head>
+<body>
+<header>
+    <div class="navbar">
+        <div id="navbarlogo" style="width: 150px;
+                            height: 64px;
+                            margin-left: 25px;
+                            margin-right: 30px;">
+            <a href="Homepage.html"></a>
+            <img id="navbarlogoimg" src="/img/title.png"/>
+        </div>
+        <ul>
+            <li onmouseover="NBC_trans_mouseover(this)" onmouseout="NBC_trans_mouseout(this)"><a
+                    href="DeathStatisticsPage.html">人员死亡统计表</a></li>
+            <li onmouseover="NBC_trans_mouseover(this)" onmouseout="NBC_trans_mouseout(this)"><a
+                    href="CivilStructurePage.html">土木结构房屋破坏统计表</a></li>
+            <li onmouseover="NBC_trans_mouseover(this)" onmouseout="NBC_trans_mouseout(this)"><a
+                    href="CommDisasterPage.html">通信系统灾情统计表</a></li>
+            <li onmouseover="NBC_trans_mouseover(this)" onmouseout="NBC_trans_mouseout(this)"><a
+                    href="CollapseRecordPage.html">崩塌记录表</a></li>
+            <li id="space_in_nav"></li>
+            <li id="DisasterPredictionbt"><a href='DisasterPredictionPage.html' style="font-weight: 300;">灾情预测</a></li>
+            <li onmouseover="NBC_trans_mouseover(this)" onmouseout="NBC_trans_mouseout(this)"><a href="UploadPage.html">上传</a>
+            </li>
+            <li onmouseover="NBC_trans_mouseover(this)" onmouseout="NBC_trans_mouseout(this)"><a
+                    href="Downloadpage.html">下载</a></li>
+            <li onmouseover="NBC_trans_mouseover(this)" onmouseout="NBC_trans_mouseout(this)"><a
+                    href="login.html">管理员登陆</a></li>
+        </ul>
+    </div>
+</header>
+<div id="pagebody">
+    <div id="pagetitle">
+        <h1>数据上传</h1>
+        <p style="font-size: 14px; margin-left: 7px;color: gray;">
+            2020年05月14日 00:00:00
+        </p>
+    </div>
+    <div id="uploadsection">
+        <form action="#" class="form-signin" th:action="@{/UploadPage.html}" method="post" enctype="multipart/form-data">
+            <div id="dropdownmenu">
+                <p>选择数据源：</p>
+                <select name="source" id="uploadselect">
+                    <option value="101">公网</option>
+                    <option value="102">北斗短报文</option>
+                    <option value="103">卫星通讯</option>
+                    <option value="104">卫星定位</option>
+                    <option value="105">专用救灾（例如车载通信）</option>
+                    <option value="106">其他业务报送数据</option>
+                    <option value="201">互联网</option>
+                    <option value="202">通信网</option>
+                    <option value="203">电网</option>
+                    <option value="204">其他泛在感知数据</option>
+                    <option value="301">微博</option>
+                    <option value="302">博客</option>
+                    <option value="303">论坛</option>
+                    <option value="304">微信</option>
+                    <option value="305">其他舆情感知数据</option>
+                    <option value="401">川滇</option>
+                    <option value="402">其他承载体基础数据</option>
+                </select>
+                <div id="uploadform">
+                    <input id="fileinput" type="file" name="jsonFile" multiple/>
+                    <input id="uploadbutton" type="submit" value="上传"/>
+                    <p style="color: red" th:text="${file_result}" th:if="${not #strings.isEmpty(file_result)}"></p>
+                </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+/*--The Sections--*/
+
+.ListTitle {
+    display: flex;
+    align-items: baseline;
+}
+
+.ListTitle h1 {
+    margin: 20px;
+}
+
+.ListList {
+    display: flex;
+    align-items: center;
+}
+
+.ListList li {
+    display: inline-block;
+    justify-content: right;
+    background-color: #556c9c;
+}
+
+.ListList a {
+    display: flex;
+    width: 500px;
+    flex: 1;
+    margin: 2px 50px;
+    color: #1e3861;
+    font-weight: bold;
+}
+
+.ListList nav {
+    display: flex;
+    float: right;
+}
+
+
+.ListList nav p {
+    font-weight: 300;
+    display: flex;
+    width: 150px;
+    flex: 1;
+}
+
+#contianer {
+    padding-bottom: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 7px 12px #b8b8b8;
+}

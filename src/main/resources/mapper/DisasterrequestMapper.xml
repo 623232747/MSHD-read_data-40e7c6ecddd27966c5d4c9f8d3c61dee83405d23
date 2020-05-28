@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yxx.hellospring.Mapper.DisasterrequestMapper" >
+  <!--  Author: wzy2017211900-->
+  <!--  DateTime: 2020/5/11 4:35-->
+  <!--  Iteration: the second iteration-->
+  <resultMap id="BaseResultMap" type="yxx.hellospring.POJO.Disasterrequest" >
+    <id column="ID" property="id" jdbcType="CHAR" />
+    <result column="date" property="date" jdbcType="VARCHAR" />
+    <result column="disasterType" property="disastertype" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="o_URL" property="oUrl" jdbcType="VARCHAR" />
+    <result column="request unit" property="requestUnit" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, date, disasterType, status, o_URL, `request unit`
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="yxx.hellospring.POJO.DisasterrequestExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from disasterrequest
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from disasterrequest
+    where ID = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from disasterrequest
+    where ID = #{id,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="yxx.hellospring.POJO.DisasterrequestExample" >
+    delete from disasterrequest
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="yxx.hellospring.POJO.Disasterrequest" >
+    insert into disasterrequest (ID, date, disasterType, 
+      status, o_URL, `request unit`
+      )
+    values (#{id,jdbcType=CHAR}, #{date,jdbcType=VARCHAR}, #{disastertype,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{oUrl,jdbcType=VARCHAR}, #{requestUnit,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="yxx.hellospring.POJO.Disasterrequest" >
+    insert into disasterrequest
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="disastertype != null" >
+        disasterType,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="oUrl != null" >
+        o_URL,
+      </if>
+      <if test="requestUnit != null" >
+        `request unit`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="disastertype != null" >
+        #{disastertype,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="oUrl != null" >
+        #{oUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="requestUnit != null" >
+        #{requestUnit,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="yxx.hellospring.POJO.DisasterrequestExample" resultType="java.lang.Integer" >
+    select count(*) from disasterrequest
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update disasterrequest
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=CHAR},
+      </if>
+      <if test="record.date != null" >
+        date = #{record.date,jdbcType=VARCHAR},
+      </if>
+      <if test="record.disastertype != null" >
+        disasterType = #{record.disastertype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oUrl != null" >
+        o_URL = #{record.oUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requestUnit != null" >
+        `request unit` = #{record.requestUnit,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update disasterrequest
+    set ID = #{record.id,jdbcType=CHAR},
+      date = #{record.date,jdbcType=VARCHAR},
+      disasterType = #{record.disastertype,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
+      o_URL = #{record.oUrl,jdbcType=VARCHAR},
+      `request unit` = #{record.requestUnit,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="yxx.hellospring.POJO.Disasterrequest" >
+    update disasterrequest
+    <set >
+      <if test="date != null" >
+        date = #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="disastertype != null" >
+        disasterType = #{disastertype,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="oUrl != null" >
+        o_URL = #{oUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="requestUnit != null" >
+        `request unit` = #{requestUnit,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="yxx.hellospring.POJO.Disasterrequest" >
+    update disasterrequest
+    set date = #{date,jdbcType=VARCHAR},
+      disasterType = #{disastertype,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      o_URL = #{oUrl,jdbcType=VARCHAR},
+      `request unit` = #{requestUnit,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,121 @@
+#pagetitle {
+    display: flex;
+    align-items: baseline;
+}
+
+#pagetitle h1 {
+    margin: 20px;
+}
+
+#pagebody {
+    padding-bottom: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 7px 12px #b8b8b8;
+}
+
+#downloadsection {
+    width: 1200px;
+    height: 200px;
+    display: inline-block;
+}
+
+#dropdownmenu {
+    margin-left: 22px;
+    align-items: flex-start;
+    display: flex;
+    float: left;
+}
+
+#dropdownmenu p {
+    width: 200px;
+    margin: 16px 20px;
+    text-align: center;
+}
+
+#dropdowncontent {
+    width: 200px;
+    z-index: 1;
+}
+
+#dropdowncontent p {
+    padding: 16px 0px;
+    margin: 0px;
+}
+
+
+#downloadbottom {
+    margin: 0 20px;
+    width: 200px;
+    height: 50px;
+    float: right;
+    right: 0;
+    align-items: center;
+    background-color: #232327;
+    color: #ffffff;
+    border-radius: 20px;
+}
+
+#downloadbottom p {
+    text-align: center;
+    font-weight: 400;
+}
+
+#display {
+    cursor: pointer;
+}
+
+#dropdownselect{
+    height: 30px;
+    width: 200px;
+    margin: 10px 10px;
+}
+
+
+#URLinputbox {
+    margin: 10px 10px;
+    width: 250px;
+    height: 25px;
+    font-weight: 100;
+    color: #5f5f5f;
+}
+
+#submitbutton {
+    margin: 0 20px;
+    width: 200px;
+    height: 50px;
+    float: right;
+    right: 0;
+    align-items: center;
+    background-color:#1e3861 ;
+    color: #ffffff;
+    border-radius: 20px;
+}
+
+.choicecontent {
+    display: none;
+    background-color: #e8e8e8;
+}
+
+.show {display: block;}
+
+
+/*登录页面的样式*/
+.login {
+    margin-left: 22px;
+    align-items: flex-start;
+    display: flex;
+    float: left;
+}
+
+.login p {
+    width: 200px;
+    margin: 16px 20px;
+    text-align: center;
+}
+.loginInputbox {
+    margin: 10px 10px;
+    width: 250px;
+    height: 25px;
+    font-weight: 100;
+    color: #5f5f5f;
+}

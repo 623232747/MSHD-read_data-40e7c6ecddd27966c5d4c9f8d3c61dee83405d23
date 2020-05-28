@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>管理员登录界面</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="/img/logo.png">
+    <link rel="stylesheet" href="/css/navigation.css" type="text/css">
+    <link rel="stylesheet" href="/css/homepage.css" type="text/css">
+    <link rel="stylesheet" href="/css/basicCSS.css" type="text/css">
+    <link rel="stylesheet" href="/css/downloadpage.css" type="text/css">
+
+    <script type="text/javascript" src="/javascript/navigation.js"></script>
+    <script type="text/javascript" src="/javascript/downloadpage.js"></script>
+</head>
+<body>
+<header>
+    <div class="navbar">
+        <div id="navbarlogo" style="width: 150px;
+                            height: 64px;
+                            margin-left: 25px;
+                            margin-right: 30px;">
+            <a href="Homepage.html"></a>
+            <img id="navbarlogoimg" src="/img/title.png" />
+        </div>
+        <ul>
+            <li onmouseover="NBC_trans_mouseover(this)" onmouseout="NBC_trans_mouseout(this)"><a href="/DeathStatisticsPage.html" >人员死亡统计表</a></li>
+            <li onmouseover="NBC_trans_mouseover(this)" onmouseout="NBC_trans_mouseout(this)"><a href="/CivilStructurePage.html" >土木结构房屋破坏统计表</a></li>
+            <li onmouseover="NBC_trans_mouseover(this)" onmouseout="NBC_trans_mouseout(this)"><a href="/CommDisasterPage.html" >通信系统灾情统计表</a></li>
+            <li onmouseover="NBC_trans_mouseover(this)" onmouseout="NBC_trans_mouseout(this)"><a href="/CollapseRecordPage.html" >崩塌记录表</a></li>
+            <li id="space_in_nav"> </li>
+            <li id="DisasterPredictionbt"><a href='admin/DisasterPredictionPage.html' style="font-weight: 300;">灾情预测</a></li>
+            <li onmouseover="NBC_trans_mouseover(this)" onmouseout="NBC_trans_mouseout(this)"><a href="/UploadPage.html" >上传</a></li>
+            <li onmouseover="NBC_trans_mouseover(this)" onmouseout="NBC_trans_mouseout(this)"><a href="/Downloadpage.html" >下载</a></li>
+            <li onmouseover="NBC_trans_mouseover(this)" onmouseout="NBC_trans_mouseout(this)"><a href="/login.html" >管理员登陆</a></li>
+        </ul>
+    </div>
+</header>
+<div id="pagebody">
+    <div id="pagetitle">
+        <h1>管理员登录</h1>
+        <p style="font-size: 14px; margin-left: 7px;color: gray;">
+            Feb 7th | 0:00 am | Year 2020
+        </p>
+    </div>
+    <div id="downloadsection">
+        <form th:action="@{/admin/login}" method="post">
+            <table>
+                <tr>
+                    <div class="login">
+                        <p style="width:100px">用户名：</p>
+                        <input style="width:200px" class="loginInputbox" type="text" name="user" placeholder="admin">
+                    </div>
+                </tr>
+                <tr>
+                    <div class="login">
+                        <p style="width:100px">密码：</p>
+                        <input style="width:200px" class="loginInputbox" type="password" name="password"/>
+                        <input id="submitbutton" type="submit" value="登录"/>
+                        <p style="color: red; width: 100px" th:text="${result}" th:if="${not #strings.isEmpty(result)}"></p>
+                    </div>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

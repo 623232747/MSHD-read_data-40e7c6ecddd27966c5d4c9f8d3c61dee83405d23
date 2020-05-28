@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yxx.hellospring.Mapper.CivilstructureMapper" >
+<!--  Author: wzy2017211900-->
+<!--  DateTime: 2020/5/11 4:35-->
+<!--  Iteration: the second iteration-->
+  <resultMap id="BaseResultMap" type="yxx.hellospring.POJO.Civilstructure" >
+    <id column="ID" property="id" jdbcType="CHAR" />
+    <result column="date" property="date" jdbcType="VARCHAR" />
+    <result column="location" property="location" jdbcType="VARCHAR" />
+    <result column="basically intact square" property="basicallyIntactSquare" jdbcType="VARCHAR" />
+    <result column="damaged square" property="damagedSquare" jdbcType="VARCHAR" />
+    <result column="destroyed square" property="destroyedSquare" jdbcType="VARCHAR" />
+    <result column="note" property="note" jdbcType="VARCHAR" />
+    <result column="reporting unit" property="reportingUnit" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, date, location, `basically intact square`, `damaged square`, `destroyed square`,
+    note, `reporting unit`
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="yxx.hellospring.POJO.CivilstructureExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from civilstructure
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from civilstructure
+    where ID = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from civilstructure
+    where ID = #{id,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="yxx.hellospring.POJO.CivilstructureExample" >
+    delete from civilstructure
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="yxx.hellospring.POJO.Civilstructure" >
+    insert into civilstructure (ID, date, location, 
+      `basically intact square`, `damaged square`, `destroyed square`,
+      note, `reporting unit`)
+    values (#{id,jdbcType=CHAR}, #{date,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, 
+      #{basicallyIntactSquare,jdbcType=VARCHAR}, #{damagedSquare,jdbcType=VARCHAR}, #{destroyedSquare,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR}, #{reportingUnit,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="yxx.hellospring.POJO.Civilstructure" >
+    insert into civilstructure
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="location != null" >
+        location,
+      </if>
+      <if test="basicallyIntactSquare != null" >
+        `basically intact square`,
+      </if>
+      <if test="damagedSquare != null" >
+        `damaged square`,
+      </if>
+      <if test="destroyedSquare != null" >
+        `destroyed square`,
+      </if>
+      <if test="note != null" >
+        note,
+      </if>
+      <if test="reportingUnit != null" >
+        `reporting unit`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="basicallyIntactSquare != null" >
+        #{basicallyIntactSquare,jdbcType=VARCHAR},
+      </if>
+      <if test="damagedSquare != null" >
+        #{damagedSquare,jdbcType=VARCHAR},
+      </if>
+      <if test="destroyedSquare != null" >
+        #{destroyedSquare,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="reportingUnit != null" >
+        #{reportingUnit,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="yxx.hellospring.POJO.CivilstructureExample" resultType="java.lang.Integer" >
+    select count(*) from civilstructure
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update civilstructure
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=CHAR},
+      </if>
+      <if test="record.date != null" >
+        date = #{record.date,jdbcType=VARCHAR},
+      </if>
+      <if test="record.location != null" >
+        location = #{record.location,jdbcType=VARCHAR},
+      </if>
+      <if test="record.basicallyIntactSquare != null" >
+        `basically intact square` = #{record.basicallyIntactSquare,jdbcType=VARCHAR},
+      </if>
+      <if test="record.damagedSquare != null" >
+        `damaged square` = #{record.damagedSquare,jdbcType=VARCHAR},
+      </if>
+      <if test="record.destroyedSquare != null" >
+        `destroyed square` = #{record.destroyedSquare,jdbcType=VARCHAR},
+      </if>
+      <if test="record.note != null" >
+        note = #{record.note,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reportingUnit != null" >
+        `reporting unit` = #{record.reportingUnit,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update civilstructure
+    set ID = #{record.id,jdbcType=CHAR},
+      date = #{record.date,jdbcType=VARCHAR},
+      location = #{record.location,jdbcType=VARCHAR},
+      `basically intact square` = #{record.basicallyIntactSquare,jdbcType=VARCHAR},
+      `damaged square` = #{record.damagedSquare,jdbcType=VARCHAR},
+      `destroyed square` = #{record.destroyedSquare,jdbcType=VARCHAR},
+      note = #{record.note,jdbcType=VARCHAR},
+      `reporting unit` = #{record.reportingUnit,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="yxx.hellospring.POJO.Civilstructure" >
+    update civilstructure
+    <set >
+      <if test="date != null" >
+        date = #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="basicallyIntactSquare != null" >
+        `basically intact square` = #{basicallyIntactSquare,jdbcType=VARCHAR},
+      </if>
+      <if test="damagedSquare != null" >
+        `damaged square` = #{damagedSquare,jdbcType=VARCHAR},
+      </if>
+      <if test="destroyedSquare != null" >
+        `destroyed square` = #{destroyedSquare,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="reportingUnit != null" >
+        `reporting unit` = #{reportingUnit,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="yxx.hellospring.POJO.Civilstructure" >
+    update civilstructure
+    set date = #{date,jdbcType=VARCHAR},
+      location = #{location,jdbcType=VARCHAR},
+      `basically intact square` = #{basicallyIntactSquare,jdbcType=VARCHAR},
+      `damaged square` = #{damagedSquare,jdbcType=VARCHAR},
+      `destroyed square` = #{destroyedSquare,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      `reporting unit` = #{reportingUnit,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

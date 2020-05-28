@@ -1,0 +1,24 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="MySQL" targetRuntime="MyBatis3Simple">
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/house_rental"
+                        userId="root"
+                        password="ph980722"/>
+
+        <javaModelGenerator targetPackage="yxx.hellospring.POJO" targetProject="src/main/java"/>
+
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="yxx.hellospring.Mapper" targetProject="src/main/java"/>
+
+        <table schema="" tableName="civilstructure_back_up"></table>
+        <table schema="" tableName="collapserecord_back_up"></table>
+        <table schema="" tableName="commdisaster_back_up"></table>
+        <table schema="" tableName="deathstatistics_back_up"></table>
+        <table schema="" tableName="disasterprediction_back_up"></table>
+        <table schema="" tableName="disasterrequest_back_up"></table>
+    </context>
+</generatorConfiguration>
